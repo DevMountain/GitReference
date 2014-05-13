@@ -34,7 +34,7 @@ static NSString * const Reference = @"reference";
     // Note: In this case, view.bounds is the same as view.frame. However, oftentimes the bounds will have an origin that is (0,0) whereas the frame will not.
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 1.75);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 1.5);
     [self.view addSubview:scrollView];
     
     CGFloat topMargin = 40;
@@ -55,7 +55,7 @@ static NSString * const Reference = @"reference";
         
         top += (20 + margin);
         
-        CGFloat heightForReference = 41;
+        CGFloat heightForReference = [self heightForReference:[self gitCommands][i][Reference]];
         
         UILabel *gitReference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, heightForReference)];
         gitReference.numberOfLines = 0;
@@ -77,6 +77,17 @@ static NSString * const Reference = @"reference";
              @{Command: @"git log", Reference: @": displays progress log"},
              @{Command: @"git comment --amend", Reference: @": re-enter last commit message"}
              ];
+
+}
+
+- (CGFloat)heightForReference:(NSString *)reference {
+    
+    CGRect bounding = [reference boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 2 * margin, 0)
+                                  options:NSStringDrawingUsesLineFragmentOrigin
+                               attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+                                  context:nil];
+    
+    return bounding.size.height;
 
 }
 
