@@ -19,6 +19,7 @@
 		71FE60EA1921DE340008A2FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71FE60D21921DE340008A2FB /* UIKit.framework */; };
 		71FE60F21921DE340008A2FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71FE60F01921DE340008A2FB /* InfoPlist.strings */; };
 		71FE60F41921DE340008A2FB /* GitReferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FE60F31921DE340008A2FB /* GitReferenceTests.m */; };
+		71FE60FF1921DE770008A2FB /* GRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FE60FE1921DE770008A2FB /* GRViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		71FE60EF1921DE340008A2FB /* GitReferenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GitReferenceTests-Info.plist"; sourceTree = "<group>"; };
 		71FE60F11921DE340008A2FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71FE60F31921DE340008A2FB /* GitReferenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GitReferenceTests.m; sourceTree = "<group>"; };
+		71FE60FD1921DE770008A2FB /* GRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRViewController.h; sourceTree = "<group>"; };
+		71FE60FE1921DE770008A2FB /* GRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 			children = (
 				71FE60DD1921DE340008A2FB /* GRAppDelegate.h */,
 				71FE60DE1921DE340008A2FB /* GRAppDelegate.m */,
+				71FE60FD1921DE770008A2FB /* GRViewController.h */,
+				71FE60FE1921DE770008A2FB /* GRViewController.m */,
 				71FE60E01921DE340008A2FB /* Images.xcassets */,
 				71FE60D51921DE340008A2FB /* Supporting Files */,
 			);
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71FE60DB1921DE340008A2FB /* main.m in Sources */,
+				71FE60FF1921DE770008A2FB /* GRViewController.m in Sources */,
 				71FE60DF1921DE340008A2FB /* GRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
