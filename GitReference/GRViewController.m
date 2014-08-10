@@ -30,41 +30,45 @@ static NSString * const Reference = @"reference";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Note: In this case, view.bounds is the same as view.frame. However, oftentimes the bounds will have an origin that is (0,0) whereas the frame will not.
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height * 1.5);
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     [self.view addSubview:scrollView];
     
-    CGFloat topMargin = 40;
+    CGFloat topMargin = 20;
+    CGFloat widthMinusMargin = self.view.frame.size.width - 2 * margin;
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, self.view.frame.size.width - 2 * margin, 20)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, 20)];
     title.font = [UIFont boldSystemFontOfSize:20];
     title.text = @"GitReference";
     [scrollView addSubview:title];
     
     CGFloat top = topMargin + 20 + margin * 2;
     
-    for (int i = 0; i < [[self gitCommands] count]; i++) {
+    for (NSDictionary *gitCommand in [self gitCommands]) {
+
+        NSString *command = gitCommand[Command];
+        NSString *reference = gitCommand[Reference];
         
         UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, 20)];
         gitCommand.font = [UIFont boldSystemFontOfSize:17];
-        gitCommand.text = [self gitCommands][i][Command];
+        gitCommand.text = command;
         [scrollView addSubview:gitCommand];
         
         top += (20 + margin);
         
-        CGFloat heightForReference = [self heightForReference:[self gitCommands][i][Reference]];
+        CGFloat heightForReference = [self heightOfReferenceString:reference];
         
         UILabel *gitReference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, heightForReference)];
         gitReference.numberOfLines = 0;
         gitReference.font = [UIFont systemFontOfSize:15];
-        gitReference.text = [self gitCommands][i][Reference];
+        gitReference.text = reference;
         [scrollView addSubview:gitReference];
         
         top += (heightForReference + margin * 2);
     }
+    
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, top);
+
 }
 
 - (NSArray *)gitCommands {
@@ -80,7 +84,7 @@ static NSString * const Reference = @"reference";
 
 }
 
-- (CGFloat)heightForReference:(NSString *)reference {
+- (CGFloat)heightOfReferenceString:(NSString *)reference {
     
     CGRect bounding = [reference boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 2 * margin, 0)
                                   options:NSStringDrawingUsesLineFragmentOrigin
@@ -89,6 +93,14 @@ static NSString * const Reference = @"reference";
     
     return bounding.size.height;
 
+}
+
+- (UIFont *)commandFont {
+    return [UIFont boldSystemFontOfSize:17];
+}
+
+- (UIFont *)referenceFont {
+    return [UIFont systemFontOfSize:15];
 }
 
 @end
