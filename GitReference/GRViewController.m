@@ -49,7 +49,7 @@ static NSString * const Reference = @"reference";
         NSString *command = gitCommand[Command];
         NSString *reference = gitCommand[Reference];
         
-        UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, 20)];
+        UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, 20)];
         gitCommand.font = [UIFont boldSystemFontOfSize:17];
         gitCommand.text = command;
         [scrollView addSubview:gitCommand];
@@ -58,7 +58,7 @@ static NSString * const Reference = @"reference";
         
         CGFloat heightForReference = [self heightOfReferenceString:reference];
         
-        UILabel *gitReference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, self.view.frame.size.width - 2 * margin, heightForReference)];
+        UILabel *gitReference = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForReference)];
         gitReference.numberOfLines = 0;
         gitReference.font = [UIFont systemFontOfSize:15];
         gitReference.text = reference;
@@ -93,14 +93,6 @@ static NSString * const Reference = @"reference";
     
     return bounding.size.height;
 
-}
-
-- (UIFont *)commandFont {
-    return [UIFont boldSystemFontOfSize:17];
-}
-
-- (UIFont *)referenceFont {
-    return [UIFont systemFontOfSize:15];
 }
 
 @end
