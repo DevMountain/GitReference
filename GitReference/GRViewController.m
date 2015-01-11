@@ -8,6 +8,7 @@
 
 #import "GRViewController.h"
 
+static CGFloat heightForLabel = 20;
 static CGFloat margin = 15;
 static NSString * const Command = @"command";
 static NSString * const Reference = @"reference";
@@ -37,7 +38,7 @@ static NSString * const Reference = @"reference";
     CGFloat topMargin = 20;
     CGFloat widthMinusMargin = self.view.frame.size.width - 2 * margin;
     
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, 20)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(margin, topMargin, widthMinusMargin, heightForLabel)];
     title.font = [UIFont boldSystemFontOfSize:20];
     title.text = @"GitReference";
     [scrollView addSubview:title];
@@ -49,12 +50,12 @@ static NSString * const Reference = @"reference";
         NSString *command = gitCommand[Command];
         NSString *reference = gitCommand[Reference];
         
-        UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, 20)];
+        UILabel *gitCommand = [[UILabel alloc] initWithFrame:CGRectMake(margin, top, widthMinusMargin, heightForLabel)];
         gitCommand.font = [UIFont boldSystemFontOfSize:17];
         gitCommand.text = command;
         [scrollView addSubview:gitCommand];
         
-        top += (20 + margin);
+        top += (heightForLabel + margin);
         
         CGFloat heightForReference = [self heightOfReferenceString:reference];
         
