@@ -43,7 +43,7 @@ static NSString * const Reference = @"reference";
     title.text = @"GitReference";
     [scrollView addSubview:title];
     
-    CGFloat top = topMargin + 20 + margin * 2;
+    CGFloat top = topMargin + heightForLabel + margin * 2;
     
     for (NSDictionary *gitCommand in [self gitCommands]) {
 
